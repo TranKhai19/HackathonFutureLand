@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDG on Campus Hackathon 2026 | Cổng Thông Tin &amp; Nộp Bài Dự Thi</title>
+  <meta name="description"
+    content="Cổng thông tin chính thức và hệ thống tiếp nhận bài dự thi Hackathon do Google Developer Groups (GDG) on Campus tổ chức. Khám phá thể lệ, thời hạn và nộp bài ngay hôm nay!">
+
+  <!-- Google Font: Be Vietnam Pro (Hỗ trợ 100% tiếng Việt chuẩn, sắc nét) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- File CSS riêng biệt -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Dải phân cách 4 màu Google -->
+  <div class="google-bar"></div>
+
+  <!-- ==========================================================================
+       1. HEADER (STICKY NAVIGATION BAR)
+       ========================================================================== -->
+  <header class="main-header">
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- Logo GDG on Campus Pixel Art -->
+        <a href="#hero" class="brand-logo" onclick="audioManager.playClick()">
+          <div class="pixel-brackets">
+            <span class="bracket-blue">&lt;</span><span class="bracket-red">G</span><span
+              class="bracket-yellow">D</span><span class="bracket-green">G</span><span class="bracket-blue">&gt;</span>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">GDG on Campus</span>
+            <span class="brand-sub">HACKATHON 2026</span>
+          </div>
+        </a>
+
+        <!-- Menu điều hướng cuộn trang mượt -->
+        <nav>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="nav-link" onclick="audioManager.playClick()">Thông tin</a></li>
+            <li><a href="#gallery" class="nav-link" onclick="audioManager.playClick()">Hình ảnh</a></li>
+            <li><a href="#rules" class="nav-link" onclick="audioManager.playClick()">Thể lệ</a></li>
+            <li><a href="#submit" class="nav-link" onclick="audioManager.playClick()">Nộp bài</a></li>
+          </ul>
+        </nav>
+
+        <!-- Thao tác góc phải: Âm thanh 8-bit & CTA nộp nhanh -->
+        <div class="header-actions">
+          <button class="sound-toggle-btn" id="soundToggleBtn" title="Bật/Tắt âm thanh 8-bit" aria-label="Toggle Sound">
+            🔊
+          </button>
+          <a href="#submit" class="pixel-btn pixel-btn-yellow" onclick="audioManager.playClick()">
+            Nộp bài ngay
+          </a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+            ☰
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. HERO SECTION & PIXEL COUNTDOWN TIMER
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-wrapper">
+
+        <!-- Badge tóm tắt thông tin -->
+        <div class="hero-top-badges">
+          <span class="pixel-badge" style="background-color: #E8F0FE;">
+            🏢 ĐƠN VỊ TỔ CHỨC: GDG ON CAMPUS
+          </span>
+          <span class="pixel-badge" style="background-color: #FEF7E0;">
+            ⚡ HÌNH THỨC: HYBRID (ONLINE &amp; SPRINT)
+          </span>
+          <span class="pixel-badge" style="background-color: #CEEAD6;">
+            🏆 TỔNG THƯỞNG: 50.000.000 VNĐ + GOOGLE CREDITS
+          </span>
+        </div>
+
+        <!-- Tiêu đề chính -->
+        <h1 class="hero-title">
+          <span>GDG CAMPUS</span><br>
+          <span class="title-highlight-blue">HACKATHON 2026</span><br>
+          <span class="title-highlight-yellow">CODE FOR IMPACT</span>
+        </h1>
+
+        <p class="hero-description">
+          Sân chơi lập trình công nghệ đỉnh cao dành cho sinh viên và cộng đồng trẻ đam mê sáng tạo. Hãy biến ý tưởng
+          đột phá thành giải pháp thực tế với sự đồng hành của các chuyên gia công nghệ từ Google.
+        </p>
+
+        <!-- Bộ đếm ngược thời gian thực Pixel Countdown Timer -->
+        <div class="countdown-card">
+          <div class="countdown-header">
+            <div class="countdown-title">
+              <span>⏳</span> THỜI GIAN CÒN LẠI ĐỂ NỘP BÀI DỰ THI
+            </div>
+            <div class="deadline-badge">
+              HẠN CHÓT: 23:59:59 - NGÀY 20/12
+            </div>
+          </div>
+
+          <div class="countdown-grid">
+            <div class="count-box">
+              <span class="count-number" id="cdDays">00</span>
+              <span class="count-label">NGÀY</span>
+            </div>
+            <div class="count-box">
+              <span class="count-number" id="cdHours">00</span>
+              <span class="count-label">GIỜ</span>
+            </div>
+            <div class="count-box">
+              <span class="count-number" id="cdMinutes">00</span>
+              <span class="count-label">PHÚT</span>
+            </div>
+            <div class="count-box">
+              <span class="count-number" id="cdSeconds">00</span>
+              <span class="count-label">GIÂY</span>
+            </div>
+          </div>
+
+          <div class="countdown-footer-msg">
+            <span style="color: var(--g-green); font-size: 1.1rem;">●</span>
+            <span>HỆ THỐNG GHI NHẬN ĐANG MỞ — VUI LÒNG NỘP TRƯỚC HẠN CHÓT</span>
+          </div>
+        </div>
+
+        <!-- Nút hành động Hero -->
+        <div class="hero-cta-group">
+          <a href="#submit" class="pixel-btn pixel-btn-green" style="font-size: 1.25rem;"
+            onclick="audioManager.playClick()">
+            🚀 Nộp Bài Dự Thi Ngay
+          </a>
+          <a href="#rules" class="pixel-btn pixel-btn-blue" onclick="audioManager.playClick()">
+            📜 Xem Thể Lệ &amp; Quy Định
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. HÌNH ẢNH LỄ PHÁT ĐỘNG (RETRO OS 90S WINDOW: LE_PHAT_DONG_GALLERY.exe)
+       ========================================================================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+
+      <div class="section-header-block">
+        <div class="section-tag">
+          <span class="pixel-badge" style="background-color: var(--g-blue); color: #FFF;">
+            📸 RETRO MEDIA EXPLORER
+          </span>
+        </div>
+        <h2 class="section-main-title">Hình Ảnh Lễ Phát Động</h2>
+        <p class="section-subtitle">Khoảnh khắc nhiệt huyết bùng nổ của các đội thi trong ngày khởi động Hackathon 2026.
+        </p>
+      </div>
+
+      <!-- Cửa sổ Retro 90s OS -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <div class="retro-window-title">
+            <span>💾</span>
+            <span>LE_PHAT_DONG_GALLERY.exe — [KICKOFF_EVENT_2026.VIEW]</span>
+          </div>
+          <div class="retro-window-controls">
+            <div class="retro-win-btn" title="Minimize">_</div>
+            <div class="retro-win-btn" title="Maximize">□</div>
+            <div class="retro-win-btn close-btn" title="Close"
+              onclick="alert('Cửa sổ hệ thống không thể đóng trong thời gian sự kiện!'); audioManager.playError();">✕
+            </div>
+          </div>
+        </div>
+
+        <div class="retro-menu-bar">
+          <span class="retro-menu-item">File</span>
+          <span class="retro-menu-item">Edit</span>
+          <span class="retro-menu-item">View</span>
+          <span class="retro-menu-item">Filter (Pixel Art)</span>
+          <span class="retro-menu-item" style="margin-left: auto; color: var(--g-blue);">4/4 IMAGES LOADED (100%)</span>
+        </div>
+
+        <div class="retro-window-body">
+          <div class="gallery-grid">
+
+            <!-- Ảnh 1: Khai Mạc -->
+            <div class="gallery-card"
+              onclick="openImageModal('assets/gallery_kickoff.jpg', 'Lễ Phát Động &amp; Công Bố Chủ Đề Hackathon 2026')">
+              <div class="gallery-img-box">
+                <span class="gallery-tag-float">IMG_01.RAW</span>
+                <img src="assets/gallery_kickoff.jpg" alt="Lễ Phát Động GDG Hackathon 2026" class="gallery-img"
+                  loading="lazy">
+              </div>
+              <div class="gallery-content">
+                <h3 class="gallery-item-title">1. Khai Mạc &amp; Công Bố Chủ Đề</h3>
+                <p class="gallery-item-desc">Không khí cuồng nhiệt tại hội trường chính với hơn 300 sinh viên lắng nghe
+                  đề bài và lộ trình cuộc thi từ GDG on Campus.</p>
+              </div>
+            </div>
+
+            <!-- Ảnh 2: Mentoring -->
+            <div class="gallery-card"
+              onclick="openImageModal('assets/gallery_mentor.jpg', 'Buổi Mentoring 1-on-1 Cùng Chuyên Gia Công Nghệ')">
+              <div class="gallery-img-box">
+                <span class="gallery-tag-float">IMG_02.BMP</span>
+                <img src="assets/gallery_mentor.jpg" alt="Buổi Mentoring 1-on-1" class="gallery-img" loading="lazy">
+              </div>
+              <div class="gallery-content">
+                <h3 class="gallery-item-title">2. Mentor 1-on-1 &amp; Tech Architecture</h3>
+                <p class="gallery-item-desc">Senior Engineers và Google Developer Experts đồng hành, phản biện và tư vấn
+                  trực tiếp cấu trúc kỹ thuật cho từng đội thi.</p>
+              </div>
+            </div>
+
+            <!-- Ảnh 3: Code Sprint -->
+            <div class="gallery-card" onclick="openImageModal('assets/gallery_sprint.jpg', '24H Code Sprint Thâu Đêm')">
+              <div class="gallery-img-box">
+                <span class="gallery-tag-float">IMG_03.PNG</span>
+                <img src="assets/gallery_sprint.jpg" alt="24H Code Sprint Thâu Đêm" class="gallery-img" loading="lazy">
+              </div>
+              <div class="gallery-content">
+                <h3 class="gallery-item-title">3. 24H Code Sprint &amp; Teamwork</h3>
+                <p class="gallery-item-desc">Bầu không khí tập trung cao độ trong đêm lập trình. Bàn phím cơ rộn rã, cà
+                  phê tràn đầy và tinh thần đồng đội bất diệt.</p>
+              </div>
+            </div>
+
+            <!-- Ảnh 4: Chung Kết -->
+            <div class="gallery-card"
+              onclick="openImageModal('assets/gallery_finale.jpg', 'Pitching &amp; Vinh Danh Quán Quân')">
+              <div class="gallery-img-box">
+                <span class="gallery-tag-float">IMG_04.GIF</span>
+                <img src="assets/gallery_finale.jpg" alt="Pitching &amp; Trao Giải Hackathon" class="gallery-img"
+                  loading="lazy">
+              </div>
+              <div class="gallery-content">
+                <h3 class="gallery-item-title">4. Demo Day &amp; Vinh Danh Quán Quân</h3>
+                <p class="gallery-item-desc">Thời khắc vinh quang khi các đội xuất sắc trình diễn sản phẩm trước ban
+                  giám khảo và nhận chiếc cúp vô địch danh giá.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="retro-status-bar">
+            <span>READY: CLICK VÀO ẢNH ĐỂ PHÓNG TO CHI TIẾT</span>
+            <span>GDG_GRAPHICS_ENGINE: V2.6_ACTIVE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. THỂ LỆ THI (RULES & REQUIREMENTS - 3 THẺ MÀU GOOGLE)
+       ========================================================================== -->
+  <section class="rules-section" id="rules">
+    <div class="container">
+
+      <div class="section-header-block">
+        <div class="section-tag">
+          <span class="pixel-badge" style="background-color: var(--g-yellow); color: var(--dark-ink);">
+            ⚖️ QUY ĐỊNH CHÍNH THỨC
+          </span>
+        </div>
+        <h2 class="section-main-title">Thể Lệ Cuộc Thi &amp; Yêu Cầu Nộp Bài</h2>
+        <p class="section-subtitle">Vui lòng đọc kỹ 3 tiêu chuẩn bắt buộc dưới đây trước khi gửi biểu mẫu đăng ký dự
+          thi.</p>
+      </div>
+
+      <div class="rules-grid">
+
+        <!-- Thẻ 1: Google Blue - Quy mô nhóm -->
+        <div class="rule-card rule-card-blue">
+          <div class="rule-header">
+            <div class="rule-num-badge">01</div>
+            <h3 class="rule-card-title">QUY MÔ &amp; THÀNH VIÊN</h3>
+          </div>
+          <div class="rule-body">
+            <ul class="rule-list">
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-blue"></div>
+                <div><strong>Tối đa 05 thành viên / đội thi:</strong> Tối thiểu 02 thành viên và cử 01 Trưởng nhóm đại
+                  diện liên lạc.</div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-blue"></div>
+                <div><strong>Đối tượng tham gia:</strong> Sinh viên đang theo học tại các trường Đại học, Cao đẳng trên
+                  toàn quốc.</div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-blue"></div>
+                <div><strong>Khuyến khích đa dạng:</strong> Phối hợp giữa lập trình viên (Dev), thiết kế (UI/UX) và quản
+                  trị sản phẩm (PO).</div>
+              </li>
+            </ul>
+            <div class="rule-action-box">
+              <span class="pixel-badge" style="background-color: #E8F0FE; width: 100%; justify-content: center;">
+                👥 THI THEO ĐỘI NHÓM
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 2: Google Yellow - Hồ sơ nộp & Nút tải Word -->
+        <div class="rule-card rule-card-yellow">
+          <div class="rule-header">
+            <div class="rule-num-badge">02</div>
+            <h3 class="rule-card-title">HỒ SƠ NỘP BÀI THI</h3>
+          </div>
+          <div class="rule-body">
+            <ul class="rule-list">
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-yellow"></div>
+                <div><strong>01 File Word mô tả dự án:</strong> Soạn thảo theo khung chuẩn BTC (Bối cảnh, giải pháp,
+                  kiến trúc công nghệ).</div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-yellow"></div>
+                <div><strong>01 Báo cáo đánh giá tiến độ:</strong> Bắt buộc chứng minh tiến độ sản phẩm hiện tại
+                  <strong>&le; 30%</strong>.
+                </div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-yellow"></div>
+                <div><strong>Link GitHub Repository:</strong> Tùy chọn (khuyến khích có mã nguồn khởi tạo hoặc tài liệu
+                  kiến trúc).</div>
+              </li>
+            </ul>
+            <div class="rule-action-box">
+              <button class="pixel-btn pixel-btn-yellow" id="downloadTemplateBtn"
+                style="width: 100%; font-size: 0.95rem; padding: 10px 14px;">
+                📥 Tải Mẫu Word .DOCX BTC
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ 3: Google Red - Thời hạn & Kỷ luật -->
+        <div class="rule-card rule-card-red">
+          <div class="rule-header">
+            <div class="rule-num-badge">03</div>
+            <h3 class="rule-card-title">THỜI HẠN &amp; KỶ LUẬT</h3>
+          </div>
+          <div class="rule-body">
+            <ul class="rule-list">
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-red"></div>
+                <div><strong>Đóng cổng đúng 23:59 ngày 20/12:</strong> Hệ thống tự động khóa cổng. Không nhận bài nộp bổ
+                  sung qua email.</div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-red"></div>
+                <div><strong>Cam kết liêm chính:</strong> Dự án không được là sản phẩm thương mại có sẵn hoặc vi phạm
+                  bản quyền bên thứ ba.</div>
+              </li>
+              <li class="rule-item">
+                <div class="pixel-bullet bullet-red"></div>
+                <div><strong>Quy tắc loại trừ:</strong> Dự án hoàn thiện vượt quá 30% trước cuộc thi sẽ bị hủy tư cách
+                  dự thi ngay lập tức.</div>
+              </li>
+            </ul>
+            <div class="rule-action-box">
+              <span class="pixel-badge"
+                style="background-color: #FCE8E6; width: 100%; justify-content: center; color: var(--g-red);">
+                ⚠️ CẢNH BÁO VI PHẠM SẼ BỊ LOẠI
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. FORM NỘP BÀI DỰ THI (SUBMISSION FORM)
+       ========================================================================== -->
+  <section class="submit-section" id="submit">
+    <div class="container">
+
+      <div class="section-header-block">
+        <div class="section-tag">
+          <span class="pixel-badge" style="background-color: var(--g-green); color: #FFF;">
+            📝 PORTAL ĐĂNG KÝ CHÍNH THỨC
+          </span>
+        </div>
+        <h2 class="section-main-title">Biểu Mẫu Nộp Bài Dự Thi</h2>
+        <p class="section-subtitle">Vui lòng điền đầy đủ và kiểm tra kỹ thông tin liên lạc trước khi nhấn gửi bài.</p>
+      </div>
+
+      <div class="form-wrapper">
+        <div class="form-window-bar">
+          <div class="form-terminal-title">
+            <span>⚡</span>
+            <span>GDG_SUBMISSION_SYSTEM_V2.sh --action=submit_project</span>
+          </div>
+          <div class="terminal-dots">
+            <div class="t-dot t-dot-red"></div>
+            <div class="t-dot t-dot-yellow"></div>
+            <div class="t-dot t-dot-green"></div>
+          </div>
+        </div>
+
+        <div class="form-inner">
+          <div class="form-notice-box">
+            <div class="notice-icon">💡</div>
+            <div>
+              <strong>Lưu ý:</strong> Link file Word mô tả và Báo cáo tiến độ nên đặt ở chế độ <em>"Bất kỳ ai có liên
+                kết đều có thể xem"</em> trên Google Drive để Ban giám khảo chấm bài thuận lợi.
+            </div>
+          </div>
+
+          <form id="submissionForm" novalidate>
+            <div class="form-grid">
+
+              <!-- Tên nhóm & Họ tên trưởng nhóm -->
+              <div class="input-row input-row-2">
+                <div class="form-field">
+                  <label for="teamName" class="pixel-label">
+                    Tên Nhóm Dự Thi <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="teamName" name="teamName" class="pixel-input" placeholder="VD: Pixel Pioneers"
+                    required autocomplete="off">
+                  <span class="field-error-msg" id="teamNameError">Vui lòng nhập tên nhóm (tối thiểu 3 ký tự).</span>
+                </div>
+
+                <div class="form-field">
+                  <label for="leaderName" class="pixel-label">
+                    Họ Và Tên Trưởng Nhóm <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="leaderName" name="leaderName" class="pixel-input"
+                    placeholder="VD: Nguyễn Văn Code" required autocomplete="name">
+                  <span class="field-error-msg" id="leaderNameError">Vui lòng nhập họ và tên của nhóm trưởng.</span>
+                </div>
+              </div>
+
+              <!-- Grid 3 Cột Liên Lạc -->
+              <div class="input-row input-row-3">
+                <div class="form-field">
+                  <label for="phone" class="pixel-label">
+                    Số Điện Thoại <span class="required-star">*</span>
+                  </label>
+                  <input type="tel" id="phone" name="phone" class="pixel-input" placeholder="VD: 0912345678" required
+                    autocomplete="tel">
+                  <span class="field-error-msg" id="phoneError">Số điện thoại hợp lệ (10 số, bắt đầu bằng 0).</span>
+                </div>
+
+                <div class="form-field">
+                  <label for="email" class="pixel-label">
+                    Email Liên Hệ <span class="required-star">*</span>
+                  </label>
+                  <input type="email" id="email" name="email" class="pixel-input" placeholder="VD: teamleader@gmail.com"
+                    required autocomplete="email">
+                  <span class="field-error-msg" id="emailError">Địa chỉ email không đúng định dạng.</span>
+                </div>
+
+                <div class="form-field">
+                  <label for="facebookUrl" class="pixel-label">
+                    Link Facebook Nhóm Trưởng <span class="required-star">*</span>
+                  </label>
+                  <input type="url" id="facebookUrl" name="facebookUrl" class="pixel-input"
+                    placeholder="https://facebook.com/username" required>
+                  <span class="field-error-msg" id="facebookUrlError">Dán link Facebook cá nhân hợp lệ
+                    (http/https).</span>
+                </div>
+              </div>
+
+              <!-- Link File Word Mô Tả Dự Án -->
+              <div class="form-field">
+                <label for="docUrl" class="pixel-label">
+                  Link File Word Mô Tả Dự Án (Theo Mẫu BTC) <span class="required-star">*</span>
+                </label>
+                <input type="url" id="docUrl" name="docUrl" class="pixel-input"
+                  placeholder="VD: https://drive.google.com/file/d/1A2B3C..." required>
+                <div class="field-hint">Dán link Google Drive hoặc OneDrive chứa file Word mô tả ý tưởng và kiến trúc.
+                </div>
+                <span class="field-error-msg" id="docUrlError">Cung cấp link URL hợp lệ (bắt đầu bằng http:// hoặc
+                  https://).</span>
+              </div>
+
+              <!-- Link File Báo Cáo Tiến Độ -->
+              <div class="form-field">
+                <label for="progressReportUrl" class="pixel-label">
+                  Link File Báo Cáo / Đánh Giá Tiến Độ Dự Án <span class="required-star">*</span>
+                </label>
+                <input type="url" id="progressReportUrl" name="progressReportUrl" class="pixel-input"
+                  placeholder="VD: https://drive.google.com/file/d/2X3Y4Z..." required>
+                <div class="field-hint">Tài liệu hoặc video ngắn chứng minh hiện trạng dự án chưa vượt quá 30%.</div>
+                <span class="field-error-msg" id="progressReportUrlError">Cung cấp link báo cáo tiến độ hợp lệ.</span>
+              </div>
+
+              <!-- Checkbox Cam Kết Tiến Độ <= 30% -->
+              <label class="checkbox-box" for="commitmentCheck">
+                <input type="checkbox" id="commitmentCheck" name="commitmentCheck" required>
+                <div class="checkbox-text">
+                  Tôi cam kết rằng dự án dự thi của nhóm hiện tại <strong>tiến độ không vượt quá 30%</strong>, là công
+                  trình tự phát triển và hoàn toàn chịu trách nhiệm trước Ban tổ chức nếu phát hiện vi phạm. <span
+                    class="required-star">*</span>
+                </div>
+              </label>
+              <span class="field-error-msg" id="commitmentCheckError" style="margin-top: -14px;">Bạn bắt buộc phải đánh
+                dấu đồng ý cam kết tiến độ.</span>
+
+              <!-- Link GitHub (Tùy chọn) -->
+              <div class="form-field">
+                <label for="githubUrl" class="pixel-label">
+                  Link GitHub Repository Dự Án <span class="optional-tag">KHÔNG BẮT BUỘC / NẾU CÓ</span>
+                </label>
+                <input type="url" id="githubUrl" name="githubUrl" class="pixel-input"
+                  placeholder="VD: https://github.com/your-team/hackathon-2026">
+                <div class="field-hint">Nếu dự án đã có repo GitHub khởi tạo, hãy chia sẻ để ban giám khảo đánh giá cấu
+                  trúc code.</div>
+                <span class="field-error-msg" id="githubUrlError">Link GitHub không hợp lệ (cần bắt đầu bằng http://
+                  hoặc https://).</span>
+              </div>
+
+              <!-- Tóm tắt ngắn giải pháp -->
+              <div class="form-field">
+                <label for="projectBrief" class="pixel-label">
+                  Tóm Tắt Nhanh Giải Pháp (Elevator Pitch) <span class="optional-tag">TÙY CHỌN</span>
+                </label>
+                <textarea id="projectBrief" name="projectBrief" rows="3" class="pixel-textarea"
+                  placeholder="Tóm tắt bài toán thực tế và giải pháp công nghệ nổi bật của nhóm (tối đa 200 từ)..."></textarea>
+              </div>
+
+              <!-- Nút Nộp Bài Chính -->
+              <div class="submit-btn-wrap">
+                <button type="submit" class="pixel-btn pixel-btn-green btn-submit-main" id="submitBtn">
+                  🚀 GỬI BÀI DỰ THI HACKATHON
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SUCCESS POP-UP MODAL (MISSION ACCOMPLISHED)
+       ========================================================================== -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+      <div class="modal-header-retro">
+        <div class="modal-title-text">★ MISSION ACCOMPLISHED! ★</div>
+        <button class="modal-close-x" id="closeModalBtn" title="Đóng">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="trophy-banner">
+          <div class="trophy-pixel-icon">🏆</div>
+          <div>
+            <h4 class="trophy-msg-title">BÀI DỰ THI ĐÃ ĐƯỢC GHI NHẬN THÀNH CÔNG!</h4>
+            <p class="trophy-msg-desc">Chúc mừng nhóm của bạn đã hoàn tất nộp hồ sơ tham gia GDG on Campus Hackathon
+              2026.</p>
+          </div>
+        </div>
+
+        <div class="modal-info-table">
+          <div class="info-row">
+            <span class="info-label">MÃ HỒ SƠ ĐĂNG KÝ:</span>
+            <span class="info-val submission-id-highlight" id="modalSubmissionId">#GDG-HK-8492</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">TÊN NHÓM DỰ THI:</span>
+            <span class="info-val" id="modalTeamName">Pixel Pioneers</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">TRƯỞNG NHÓM:</span>
+            <span class="info-val" id="modalLeaderName">Nguyễn Văn Code</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">THỜI GIAN HỆ THỐNG:</span>
+            <span class="info-val" id="modalTimestamp">--/--/---- --:--:--</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">TRẠNG THÁI TIẾP NHẬN:</span>
+            <span class="info-val info-val-badge">ĐÃ LƯU DATABASE BTC ✔</span>
+          </div>
+        </div>
+
+        <div class="modal-next-steps">
+          📌 <strong>Bước tiếp theo:</strong> Ban tổ chức đã gửi email xác nhận cùng hướng dẫn tham gia kênh
+          Discord/Zalo dành riêng cho đội thi. Vui lòng kiểm tra hộp thư của trưởng nhóm.
+        </div>
+
+        <button class="pixel-btn pixel-btn-green" id="confirmModalBtn" style="width: 100%;">
+          XÁC NHẬN &amp; TIẾP TỤC
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas pháo hoa pixel confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Lightbox Modal xem ảnh phóng to -->
+  <div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImageModal()">
+    <div class="img-modal-card" onclick="event.stopPropagation()">
+      <div class="retro-window-header">
+        <div class="retro-window-title" id="imgModalTitle">IMAGE_PREVIEW.RAW</div>
+        <div class="retro-win-btn close-btn" onclick="closeImageModal()">✕</div>
+      </div>
+      <img id="imgModalSrc" src="" alt="Preview">
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       7. FOOTER CHÂN TRANG (TINH GỌN, SẠCH ĐẸP)
+       ========================================================================== -->
+  <footer class="main-footer">
+    <!-- Dải sọc 4 màu Google -->
+    <div class="google-bar"></div>
+
+    <div class="container">
+      <div class="footer-content">
+
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="pixel-brackets">
+              <span class="bracket-blue">&lt;</span><span class="bracket-red">G</span><span
+                class="bracket-yellow">D</span><span class="bracket-green">G</span><span
+                class="bracket-blue">&gt;</span>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title">GDG on Campus</span>
+              <span class="brand-sub">DEVELOPER ECOSYSTEM</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Cộng đồng lập trình sinh viên hỗ trợ phát triển kỹ năng công nghệ, giải quyết bài toán thực tế và kết nối
+            mạng lưới kỹ sư trẻ toàn cầu.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" title="Facebook">FB</a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="social-btn" title="GitHub">GH</a>
+            <a href="https://discord.com" target="_blank" rel="noopener" class="social-btn" title="Discord">DC</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn" title="YouTube">YT</a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Liên hệ Ban tổ chức -->
+        <div>
+          <h4 class="footer-col-title">LIÊN HỆ BAN TỔ CHỨC</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span>📧</span> <strong>Email:</strong> hackathon@gdgoncampus.dev
+            </li>
+            <li class="footer-contact-item">
+              <span>📞</span> <strong>Hotline:</strong> 0988.123.456 (24/7)
+            </li>
+            <li class="footer-contact-item">
+              <span>🌐</span> <strong>Fanpage:</strong> fb.com/gdgoncampus.vn
+            </li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Mốc thời gian -->
+        <div>
+          <h4 class="footer-col-title">MỐC SỰ KIỆN</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span>📅</span> <strong>Hạn nộp đơn:</strong> 23:59:59 - 20/12
+            </li>
+            <li class="footer-contact-item">
+              <span>⚡</span> <strong>Thi đấu:</strong> 26/12 - 27/12
+            </li>
+            <li class="footer-contact-item">
+              <span>🏆</span> <strong>Pitching &amp; Trao giải:</strong> Chiều 27/12
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Dòng bản quyền dưới cùng -->
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 Google Developer Groups on Campus. All rights reserved.
+        </div>
+        <div style="font-weight: 700; letter-spacing: 0.5px;">
+          [PRESS START TO INNOVATE] ★ RETRO 8-BIT
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- File JavaScript riêng biệt -->
+  <script src="script.js" defer></script>
+</body>
+
+</html>
