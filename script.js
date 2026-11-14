@@ -157,32 +157,72 @@ if (mobileMenuBtn && navLinks) {
 }
 
 /**
- * 2. PIXEL COUNTDOWN TIMER (ĐẾM NGƯỢC THỜI GIAN THỰC ĐẾN 23:59:59 NGÀY 20/12)
+ * 2. PIXEL COUNTDOWN TIMER (MỞ ĐƠN 25/11 - ĐÓNG ĐƠN 20/12)
  */
 function initCountdown() {
   const elDays = document.getElementById('cdDays');
   const elHours = document.getElementById('cdHours');
   const elMinutes = document.getElementById('cdMinutes');
   const elSeconds = document.getElementById('cdSeconds');
+  const elTitle = document.getElementById('cdTitle');
+  const elFooterMsg = document.getElementById('cdFooterMsg');
 
   if (!elDays || !elHours || !elMinutes || !elSeconds) return;
 
-  function getTargetDeadline() {
+  function getScheduleDates() {
     const now = new Date();
-    let targetYear = now.getFullYear();
-    // 20/12 lúc 23:59:59
-    let target = new Date(targetYear, 11, 20, 23, 59, 59);
-    if (now > target) {
-      target = new Date(targetYear + 1, 11, 20, 23, 59, 59);
+    let year = now.getFullYear();
+    // Tháng trong JS tính từ 0: 10 là tháng 11, 11 là tháng 12
+    let openDate = new Date(year, 10, 25, 0, 0, 0); // 25/11 00:00:00
+    let closeDate = new Date(year, 11, 20, 23, 59, 59); // 20/12 23:59:59
+
+    // Nếu thời gian hiện tại đã qua đợt đóng đơn trong năm, tự động dùng cho năm sau
+    if (now > closeDate) {
+      openDate = new Date(year + 1, 10, 25, 0, 0, 0);
+      closeDate = new Date(year + 1, 11, 20, 23, 59, 59);
     }
-    return target;
+    return { openDate, closeDate };
   }
 
-  const deadline = getTargetDeadline();
-
   function update() {
-    const now = new Date().getTime();
-    const difference = deadline.getTime() - now;
+    const now = new Date();
+    const { openDate, closeDate } = getScheduleDates();
+
+    let targetDate;
+    if (now < openDate) {
+      // Chưa đến ngày mở đơn -> Đếm ngược đến ngày mở đơn
+      targetDate = openDate;
+      if (elTitle) {
+        elTitle.innerHTML = '<span>⏳</span> THỜI GIAN ĐẾN KHI MỞ ĐƠN ĐĂNG KÝ';
+      }
+      if (elFooterMsg) {
+        elFooterMsg.innerHTML = '<span style="color: var(--g-yellow); font-size: 1.1rem;">●</span> <span>CỔNG ĐĂNG KÝ SẼ CHÍNH THỨC MỞ VÀO NGÀY 25/11</span>';
+      }
+    } else if (now <= closeDate) {
+      // Đang trong thời gian mở đơn -> Đếm ngược đến hạn chót
+      targetDate = closeDate;
+      if (elTitle) {
+        elTitle.innerHTML = '<span>⏳</span> THỜI GIAN CÒN LẠI ĐỂ NỘP BÀI DỰ THI';
+      }
+      if (elFooterMsg) {
+        elFooterMsg.innerHTML = '<span style="color: var(--g-green); font-size: 1.1rem;">●</span> <span>HỆ THỐNG GHI NHẬN ĐANG MỞ — VUI LÒNG NỘP TRƯỚC HẠN CHÓT</span>';
+      }
+    } else {
+      // Đã đóng đơn
+      elDays.textContent = '00';
+      elHours.textContent = '00';
+      elMinutes.textContent = '00';
+      elSeconds.textContent = '00';
+      if (elTitle) {
+        elTitle.innerHTML = '<span>🔒</span> CỔNG ĐĂNG KÝ ĐÃ KHÓA';
+      }
+      if (elFooterMsg) {
+        elFooterMsg.innerHTML = '<span style="color: var(--g-red); font-size: 1.1rem;">●</span> <span>HỆ THỐNG ĐÃ KẾT THÚC NHẬN BÀI DỰ THI (20/12)</span>';
+      }
+      return;
+    }
+
+    const difference = targetDate.getTime() - now.getTime();
 
     if (difference <= 0) {
       elDays.textContent = '00';

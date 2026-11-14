@@ -105,11 +105,11 @@
         <!-- Bộ đếm ngược thời gian thực Pixel Countdown Timer -->
         <div class="countdown-card">
           <div class="countdown-header">
-            <div class="countdown-title">
+            <div class="countdown-title" id="cdTitle">
               <span>⏳</span> THỜI GIAN CÒN LẠI ĐỂ NỘP BÀI DỰ THI
             </div>
-            <div class="deadline-badge">
-              HẠN CHÓT: 23:59:59 - NGÀY 20/12
+            <div class="deadline-badge" id="cdBadge">
+              MỞ ĐƠN: 25/11 — HẠN CHÓT: 23:59:59 NGÀY 20/12
             </div>
           </div>
 
@@ -132,7 +132,7 @@
             </div>
           </div>
 
-          <div class="countdown-footer-msg">
+          <div class="countdown-footer-msg" id="cdFooterMsg">
             <span style="color: var(--g-green); font-size: 1.1rem;">●</span>
             <span>HỆ THỐNG GHI NHẬN ĐANG MỞ — VUI LÒNG NỘP TRƯỚC HẠN CHÓT</span>
           </div>
@@ -361,7 +361,7 @@
             <ul class="rule-list">
               <li class="rule-item">
                 <div class="pixel-bullet bullet-red"></div>
-                <div><strong>Đóng cổng đúng 23:59 ngày 20/12:</strong> Hệ thống tự động khóa cổng. Không nhận bài nộp bổ
+                <div><strong>Thời gian mở &amp; đóng cổng:</strong> Mở cổng ngày 25/11 và đóng cổng đúng 23:59:59 ngày 20/12. Hệ thống tự động khóa cổng, không nhận bài nộp bổ
                   sung qua email.</div>
               </li>
               <li class="rule-item">
@@ -680,7 +680,10 @@
           <h4 class="footer-col-title">MỐC SỰ KIỆN</h4>
           <ul class="footer-contact-list">
             <li class="footer-contact-item">
-              <span>📅</span> <strong>Hạn nộp đơn:</strong> 23:59:59 - 20/12
+              <span>🚀</span> <strong>Mở đơn đăng ký:</strong> 25/11
+            </li>
+            <li class="footer-contact-item">
+              <span>📅</span> <strong>Hạn đóng đơn:</strong> 23:59:59 - 20/12
             </li>
             <li class="footer-contact-item">
               <span>⚡</span> <strong>Thi đấu:</strong> 26/12 - 27/12
